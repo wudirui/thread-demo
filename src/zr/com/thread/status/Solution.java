@@ -19,6 +19,7 @@ public class Solution extends Thread {
             }
         }
 
+
         System.out.println(isInterrupted());
         //打印出线程当前的状态，当while循环的判断条件为isInterrupted()时，打印结果为true，当interrupted() 时，打印结果为false
         System.out.println("线程结束");
@@ -26,6 +27,7 @@ public class Solution extends Thread {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
+
         solution.start();
     }
 }
