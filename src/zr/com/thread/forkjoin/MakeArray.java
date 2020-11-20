@@ -6,7 +6,7 @@ import java.util.Random;
  * 生成随机数据
  */
 public class MakeArray {
-    private static final int ARRAY_LENGTH = 1000;
+    private static final int ARRAY_LENGTH = 100;
     private static final int THRESHOLD = 1000;
 
     public static int[] makeArray() {

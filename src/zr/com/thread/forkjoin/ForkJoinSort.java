@@ -1,8 +1,12 @@
 package zr.com.thread.forkjoin;
 
 import java.util.Arrays;
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
+/**
+ * ForkJoin实现
+ */
 public class ForkJoinSort extends RecursiveTask<int[]> {
 
     private static final int THRESHOLD = 2;
@@ -19,10 +23,20 @@ public class ForkJoinSort extends RecursiveTask<int[]> {
         }
         int mid = src.length / 2;
         ForkJoinSort left = new ForkJoinSort(Arrays.copyOfRange(src, 0, mid));
-        ForkJoinSort right = new ForkJoinSort(Arrays.copyOfRange(src, mid + 1, src.length));
+        ForkJoinSort right = new ForkJoinSort(Arrays.copyOfRange(src, mid, src.length));
         invokeAll(left, right);
         int[] leftResult = left.join();
         int[] rightResult = right.join();
-        return MergeSort.merge(leftResult,rightResult);
+        return MergeSort.merge(leftResult, rightResult);
+    }
+
+    public static void main(String[] args) {
+        ForkJoinPool pool = new ForkJoinPool();
+        int[] src = MakeArray.makeArray();
+        ForkJoinSort forkJoinSort = new ForkJoinSort(src);
+        int[] arr = pool.invoke(forkJoinSort);
+        for (int i : arr) {
+            System.out.println(i);
+        }
     }
 }
