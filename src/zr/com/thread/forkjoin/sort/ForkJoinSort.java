@@ -1,4 +1,6 @@
-package zr.com.thread.forkjoin;
+package zr.com.thread.forkjoin.sort;
+
+import zr.com.thread.utils.MakeArray;
 
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
@@ -32,7 +34,7 @@ public class ForkJoinSort extends RecursiveTask<int[]> {
 
     public static void main(String[] args) {
         ForkJoinPool pool = new ForkJoinPool();
-        int[] src = MakeArray.makeArray();
+        int[] src = new MakeArray(100).makeArray();
         ForkJoinSort forkJoinSort = new ForkJoinSort(src);
         int[] arr = pool.invoke(forkJoinSort);
         for (int i : arr) {

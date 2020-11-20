@@ -1,4 +1,4 @@
-package zr.com.thread.forkjoin;
+package zr.com.thread.forkjoin.sort;
 
 public class InsertSort {
     private int[] arr;

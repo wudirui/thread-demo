@@ -1,4 +1,4 @@
-package zr.com.thread.forkjoin;
+package zr.com.thread.forkjoin.sort;
 
 /**
  * 将两个有序的数组合并
